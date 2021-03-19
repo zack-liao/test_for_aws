@@ -1,0 +1,23 @@
+{
+  "name": "test_for_aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zack-liao/test_for_aws.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zack-liao/test_for_aws/issues"
+  },
+  "homepage": "https://github.com/zack-liao/test_for_aws#readme",
+  "dependencies": {
+    "koa": "^2.13.1"
+  }
+}
