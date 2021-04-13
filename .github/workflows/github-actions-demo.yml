@@ -14,7 +14,7 @@ jobs:
       image: 14.16.1-alpine3.10
     steps:
     - uses: actions/checkout@v2
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
         super_secret: ${{ secrets.SuperSecret }}
         
