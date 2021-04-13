@@ -1,0 +1,25 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    environment:
+      name: test
+    container:
+      image: 14.16.1-alpine3.10
+    steps:
+    - uses: actions/checkout@v2
+      uses: actions/setup-node@v1
+      with:
+        super_secret: ${{ secrets.SuperSecret }}
+        
+    - run: npm ci
+    - run: npm start
+    - run: echo GITHUB_REPOSITORY $GITHUB_REPOSITORY
+    - run: echo Test $TEST
+    - run: echo Hello $HELLO
