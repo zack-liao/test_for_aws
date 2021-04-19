@@ -22,7 +22,6 @@ jobs:
       with:
         envkey_TEST: ${{ secrets.TEST }}
         envkey_HELLO: ${{ secrets.HELLO }}
-        directory: ./
         file_name: .env
   unit-test:
     needs: build
