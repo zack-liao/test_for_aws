@@ -25,6 +25,12 @@ jobs:
         envkey_TEST: ${{ secrets.TEST }}
         envkey_HELLO: ${{ secrets.HELLO }}
         directory: ${{ github.workspace }}
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: env
+        path: .env
+        retention-days: 1
   unit-test:
     needs: build
     runs-on: ubuntu-latest
@@ -39,6 +45,10 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
     - run : pwd
+    - name: Download a single artifact
+      uses: actions/download-artifact@v2
+      with:
+      name: env
     - run: ls
     - name: copy env file 
       run: mv ./.env.example ./.env
