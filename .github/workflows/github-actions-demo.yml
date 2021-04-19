@@ -48,7 +48,7 @@ jobs:
     - name: Download a single artifact
       uses: actions/download-artifact@v2
       with:
-      name: env
+        name: env
     - run: ls
     - name: copy env file 
       run: mv ./.env.example ./.env
