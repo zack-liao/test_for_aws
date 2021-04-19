@@ -42,14 +42,15 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: test
-    container:
-      image: node:14.16.1-alpine3.10
     env:
       TEST: ${{ secrets.TEST }}
       HELLO: ${{ secrets.HELLO }}
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
     - run : pwd
     - name: Download a single artifact
       uses: actions/download-artifact@v2
