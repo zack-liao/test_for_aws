@@ -13,6 +13,9 @@ jobs:
       name: test
     container:
       image: node:14.16.1-alpine3.10
+    env:
+      TEST: ${{ secrets.TEST }}
+      HELLO: ${{ secrets.HELLO }}
     steps:
     - uses: actions/checkout@v2
     - run: npm ci
