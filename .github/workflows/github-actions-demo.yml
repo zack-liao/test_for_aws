@@ -21,8 +21,8 @@ jobs:
     - name: Create .env file
       uses: SpicyPizza/create-envfile@v1.1
       with:
-        TEST: ${{ secrets.TEST }}
-        HELLO: ${{ secrets.HELLO }}
+        envkey_TEST: ${{ secrets.TEST }}
+        envkey_HELLO: ${{ secrets.HELLO }}
         directory: ./
         file_name: .env
     - run: mv ./.env.example ./.env
