@@ -25,6 +25,8 @@ jobs:
         envkey_TEST: ${{ secrets.TEST }}
         envkey_HELLO: ${{ secrets.HELLO }}
         directory: ${{ github.workspace }}
+    - run : ls
+    - run : cat .env
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
@@ -50,8 +52,8 @@ jobs:
       with:
         name: env
         path: ${{ github.workspace }}/.env
-    - run: cat ./.env
     - run: ls
+    - run: cat ./.env
     - name: copy env file 
       run: mv ./.env.example ./.env
     - run: npm ci
