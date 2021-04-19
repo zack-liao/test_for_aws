@@ -41,7 +41,7 @@ jobs:
         restore-keys: |
           ${{ runner.OS }}-node-
     - name: install node modules
-    - run : npm ci
+      run : npm ci
   unit-test:
     needs: build
     runs-on: ubuntu-latest
