@@ -35,15 +35,10 @@ jobs:
         name: .env
         path: .env
         retention-days: 1
-    - name: Cache Node.js modules
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm
-        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-    - name: install node modules
-      run : npm ci
+    - uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+          NODE_ENV: production
   unit-test:
     needs: build
     runs-on: ubuntu-latest
@@ -66,15 +61,10 @@ jobs:
     - run: cat ./.env
     - name: copy env file 
       run: mv ./.env.example ./.env
-    - name: Cache Node.js modules
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    - name: install node modules
-      run : npm ci
+    - uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
+          NODE_ENV: production
     - run: npm start
     - run: echo GITHUB_REPOSITORY $GITHUB_REPOSITORY
     - run: echo Test $TEST
