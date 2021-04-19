@@ -22,6 +22,7 @@ jobs:
       with:
         envkey_TEST: ${{ secrets.TEST }}
         envkey_HELLO: ${{ secrets.HELLO }}
+        directory: $GITHUB_WORKSPACE
   unit-test:
     runs-on: ubuntu-latest
     environment:
