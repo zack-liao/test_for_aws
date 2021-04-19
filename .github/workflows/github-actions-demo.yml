@@ -33,6 +33,7 @@ jobs:
         name: .env
         path: .env
         retention-days: 1
+    - run : npm ci
     - name: Cache Node.js modules
       uses: actions/cache@v2
       with:
