@@ -18,9 +18,16 @@ jobs:
       HELLO: ${{ secrets.HELLO }}
     steps:
     - uses: actions/checkout@v2
+    - name: Create .env file
+      uses: SpicyPizza/create-envfile@v1.1
+      with:
+        TEST: ${{ secrets.TEST }}
+        HELLO: ${{ secrets.HELLO }}
+        file_name: .env
     - run: mv ./.env.example ./.env
     - run: npm ci
     - run: npm start
     - run: echo GITHUB_REPOSITORY $GITHUB_REPOSITORY
     - run: echo Test $TEST
     - run: echo Hello $HELLO
+    - run: cat ./.env
