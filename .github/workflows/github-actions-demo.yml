@@ -26,6 +26,7 @@ jobs:
         envkey_HELLO: ${{ secrets.HELLO }}
         directory: ${{ github.workspace }}
   unit-test:
+    need: build
     runs-on: ubuntu-latest
     environment:
       name: test
@@ -37,12 +38,7 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-    - name: Create .env file
-      uses: SpicyPizza/create-envfile@v1.1
-      with:
-        envkey_TEST: ${{ secrets.TEST }}
-        envkey_HELLO: ${{ secrets.HELLO }}
-        directory: ${{ github.workspace }}
+      run: cat ./.env
     - name: copy env file 
       run: mv ./.env.example ./.env
     - run: npm ci
