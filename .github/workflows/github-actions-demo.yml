@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
- 
     runs-on: ubuntu-latest
     environment:
       name: test
@@ -16,6 +15,7 @@ jobs:
       TEST: ${{ secrets.TEST }}
       HELLO: ${{ secrets.HELLO }}
     steps:
+    - name: Check out code
     - uses: actions/checkout@v2
     - name: Create .env file
       uses: SpicyPizza/create-envfile@v1.1
@@ -24,7 +24,6 @@ jobs:
         envkey_HELLO: ${{ secrets.HELLO }}
         file_name: .env
   unit-test:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: test
@@ -34,6 +33,7 @@ jobs:
       TEST: ${{ secrets.TEST }}
       HELLO: ${{ secrets.HELLO }}
     steps:
+    - name: Check out code
     - uses: actions/checkout@v2
     - run: mv ./.env.example ./.env
     - run: npm ci
