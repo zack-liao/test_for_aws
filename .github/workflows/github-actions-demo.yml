@@ -36,9 +36,9 @@ jobs:
         path: .env
         retention-days: 1
     - uses: bahmutov/npm-install@v1
-        with:
-          useRollingCache: true
-          NODE_ENV: production
+      with:
+        useRollingCache: true
+        NODE_ENV: production
   unit-test:
     needs: build
     runs-on: ubuntu-latest
@@ -62,9 +62,9 @@ jobs:
     - name: copy env file 
       run: mv ./.env.example ./.env
     - uses: bahmutov/npm-install@v1
-        with:
-          useRollingCache: true
-          NODE_ENV: production
+      with:
+        useRollingCache: true
+        NODE_ENV: production
     - run: npm start
     - run: echo GITHUB_REPOSITORY $GITHUB_REPOSITORY
     - run: echo Test $TEST
