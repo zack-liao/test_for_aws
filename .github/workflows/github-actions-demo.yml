@@ -33,7 +33,6 @@ jobs:
         name: .env
         path: .env
         retention-days: 1
-    - run : npm ci
     - name: Cache Node.js modules
       uses: actions/cache@v2
       with:
@@ -41,6 +40,8 @@ jobs:
         key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.OS }}-node-
+    - name: install node modules
+    - run : npm ci
   unit-test:
     needs: build
     runs-on: ubuntu-latest
