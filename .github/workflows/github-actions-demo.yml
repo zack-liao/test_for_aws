@@ -16,7 +16,7 @@ jobs:
       HELLO: ${{ secrets.HELLO }}
     steps:
     - name: Check out code
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
     - name: Create .env file
       uses: SpicyPizza/create-envfile@v1.1
       with:
@@ -34,8 +34,9 @@ jobs:
       HELLO: ${{ secrets.HELLO }}
     steps:
     - name: Check out code
-    - uses: actions/checkout@v2
-    - run: mv ./.env.example ./.env
+      uses: actions/checkout@v2
+    - name: copy env file 
+      run: mv ./.env.example ./.env
     - run: npm ci
     - run: npm start
     - run: echo GITHUB_REPOSITORY $GITHUB_REPOSITORY
