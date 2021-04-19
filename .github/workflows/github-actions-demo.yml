@@ -23,7 +23,7 @@ jobs:
       with:
         TEST: ${{ secrets.TEST }}
         HELLO: ${{ secrets.HELLO }}
-        file_name: .env
+        file_name: ./.env
     - run: mv ./.env.example ./.env
     - run: npm ci
     - run: npm start
