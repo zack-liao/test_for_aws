@@ -38,7 +38,7 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-      run: cat ./.env
+    - run: cat ./.env
     - name: copy env file 
       run: mv ./.env.example ./.env
     - run: npm ci
