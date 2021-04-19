@@ -18,6 +18,7 @@ jobs:
       HELLO: ${{ secrets.HELLO }}
     steps:
     - uses: actions/checkout@v2
+    - run: mv ./.env.example ./.env
     - run: npm ci
     - run: npm start
     - run: echo GITHUB_REPOSITORY $GITHUB_REPOSITORY
