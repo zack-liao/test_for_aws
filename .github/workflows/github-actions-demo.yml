@@ -29,7 +29,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: env
-        path: .env
+        path: ${{ github.workspace }}/.env
         retention-days: 1
   unit-test:
     needs: build
@@ -49,7 +49,8 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: env
-        path: ${{ github.workspace }}
+        path: ${{ github.workspace }}/.env
+    - run: cat ./.env
     - run: ls
     - name: copy env file 
       run: mv ./.env.example ./.env
