@@ -30,8 +30,8 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
-        name: env
-        path: ${{ github.workspace }}/.env
+        name: .env
+        path: .env
         retention-days: 1
   unit-test:
     needs: build
@@ -50,8 +50,7 @@ jobs:
     - name: Download a single artifact
       uses: actions/download-artifact@v2
       with:
-        name: env
-        path: ${{ github.workspace }}/.env
+        name: .env
     - run: ls
     - run: cat ./.env
     - name: copy env file 
@@ -61,4 +60,4 @@ jobs:
     - run: echo GITHUB_REPOSITORY $GITHUB_REPOSITORY
     - run: echo Test $TEST
     - run: echo Hello $HELLO
-    - run: cat ./.env
+    - run: cat .env
