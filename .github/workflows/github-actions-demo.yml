@@ -41,7 +41,7 @@ jobs:
         path: ~/.npm
         key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-          ${{ runner.OS }}-node-
+          ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
     - name: install node modules
       run : npm ci
   unit-test:
@@ -72,7 +72,7 @@ jobs:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-node-
+          ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
     - name: install node modules
       run : npm ci
     - run: npm start
