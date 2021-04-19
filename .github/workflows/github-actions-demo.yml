@@ -26,7 +26,7 @@ jobs:
         envkey_HELLO: ${{ secrets.HELLO }}
         directory: ${{ github.workspace }}
   unit-test:
-    need: build
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: test
