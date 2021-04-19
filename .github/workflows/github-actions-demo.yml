@@ -17,12 +17,14 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+    - run : echo $GITHUB_WORKSPACE
+    - run : pwd
     - name: Create .env file
       uses: SpicyPizza/create-envfile@v1.1
       with:
         envkey_TEST: ${{ secrets.TEST }}
         envkey_HELLO: ${{ secrets.HELLO }}
-        directory: $GITHUB_WORKSPACE
+        directory: ${{ GITHUB_WORKSPACE }}
   unit-test:
     runs-on: ubuntu-latest
     environment:
