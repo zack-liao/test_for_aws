@@ -46,10 +46,6 @@ jobs:
       with:
         node-version: '14'
     - run : pwd
-    - name: Download a single artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: .env
     - run: ls
     - run: cat ./.env
     - name: copy env file 
