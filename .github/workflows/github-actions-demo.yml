@@ -25,18 +25,12 @@ jobs:
         envkey_TEST: ${{ secrets.TEST }}
         envkey_HELLO: ${{ secrets.HELLO }}
         directory: ${{ github.workspace }}
-    - run : ls
     - run : cat .env
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: .env
-        path: .env
-        retention-days: 1
-    - uses: bahmutov/npm-install@v1
+    - name: NPM ci and cacheing
+      uses: bahmutov/npm-install@v1
       with:
         useRollingCache: true
-        NODE_ENV: production
+        NODE_ENV: dev
   unit-test:
     needs: build
     runs-on: ubuntu-latest
@@ -69,3 +63,4 @@ jobs:
     - run: echo Test $TEST
     - run: echo Hello $HELLO
     - run: cat .env
+    - run: echo github.ref $github.ref
